@@ -1,1 +1,16 @@
-<h2>index Picture</h2>
+<h1>一覧</h1>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+  </tr>
+<% @pictures.each do |picture| %>
+  <tr>
+    <td><%= picture.content %></td>
+    <td><%= image_tag picture.image.url if picture.image && picture.image.url %></td>
+    <td><%= link_to '詳細を確認する', picture_path(picture.id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '投稿する', new_picture_path %>
