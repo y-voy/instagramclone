@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
 
+  before_action :set_picture, only: [:show, :edit, :update]
+
   def index
     @pictures = Picture.all
   end
@@ -11,22 +13,19 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params)
     if @picture.save
-      redirect_to pictures_path
+      redirect_to pictures_path, notice: "投稿しました！"
     else
       render :new
     end
   end
 
   def show
-    @picture = Picture.find(params[:id])
   end
 
   def edit
-    @picture = Picture.find(params[:id])
   end
 
   def update
-    @picture = Picture.find(params[:id])
     if @picture.update(picture_params)
       redirect_to pictures_path, notice: "編集しました！"
     else
@@ -38,6 +37,10 @@ class PicturesController < ApplicationController
 
   def picture_params
     params.require(:picture).permit(:content, :image, :image_cache)
+  end
+
+  def set_picture
+    @picture = Picture.find(params[:id])
   end
 
 end
