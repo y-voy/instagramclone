@@ -9,6 +9,7 @@
     <td><%= picture.content %></td>
     <td><%= image_tag picture.image.url if picture.image && picture.image.url %></td>
     <td><%= link_to '詳細を確認する', picture_path(picture.id) %></td>
+    <td><%= link_to "編集する", edit_picture_path(picture.id) %></td>
   </tr>
 <% end %>
 </table>
