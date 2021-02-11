@@ -6,10 +6,13 @@ ja:
     attributes:
       picture:
         content: 内容
+        image: 画像
       user:
         title: タイトル
         name: 名前
+        nickname: ニックネーム
         email: メールアドレス
+        image: 画像
         current_password: 現在のパスワード
         password: パスワード
         password_confirmation: 確認用パスワード
