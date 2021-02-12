@@ -28,19 +28,30 @@ class PicturesController < ApplicationController
   end
 
   def edit
+    unless @picture.user_id == current_user.id
+      redirect_to pictures_path, notice: "自分以外の投稿は編集できません"
+    end
   end
 
   def update
-    if @picture.update(picture_params)
-      redirect_to pictures_path, notice: "編集しました！"
+    if @picture.user_id == current_user.id
+      if @picture.update(picture_params)
+        redirect_to pictures_path, notice: "編集しました！"
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to pictures_path, notice: "自分以外の投稿は編集できません"
     end
   end
 
   def destroy
-    @picture.destroy
-    redirect_to pictures_path, notice: "削除しました！"
+    if @picture.user_id == current_user.id
+      @picture.destroy
+      redirect_to pictures_path, notice:"削除しました！"
+    else
+      redirect_to pictures_path, notice: "自分以外の投稿は削除できません"
+    end
   end
 
   def confirm
