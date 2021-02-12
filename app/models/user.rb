@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   before_validation { email.downcase! }
+  attr_accessor :image_x, :image_y, :image_w, :image_h
+  has_one_attached :image
   validates :name, presence: true, length: { maximum: 30 }
   validates :nickname, presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 },

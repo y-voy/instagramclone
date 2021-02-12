@@ -1,5 +1,6 @@
 /*
  *= require bootstrap/dist/css/bootstrap.min
+ *= require cropper.min.css
  *= require_tree .
  *= require_self
  */
@@ -18,4 +19,11 @@
  font-size: 25px;
  color: #e54747;
  margin-left: 20px;
+}
+
+.user-image {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
 }
