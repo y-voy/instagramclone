@@ -1,0 +1,19 @@
+<table class="row col-md-12">
+  <!-- <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+  </tr> -->
+<% @pictures.each do |picture| %>
+<% @favorite = current_user.favorites.find_by(picture_id: picture.id) %>
+　<% if @favorite.present? %>
+  <tr>
+    <td><%= picture.content %></td>
+    <td><%= image_tag picture.image.url if picture.image && picture.image.url %></td>
+    <td><%= picture.user.nickname %></td>
+    <td><%= link_to '詳細を確認する', picture_path(picture.id) %></td>
+    <td><%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+<%= link_to '一覧画面に戻る', pictures_path %>

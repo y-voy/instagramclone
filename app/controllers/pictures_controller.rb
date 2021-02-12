@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
 
-  before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :set_picture, only: [:show, :edit, :update, :destroy, :favorite_list]
 
   def index
     @pictures = Picture.all
@@ -58,6 +58,11 @@ class PicturesController < ApplicationController
     @picture = current_user.pictures.build(picture_params)
     render :new if @picture.invalid?
   end
+
+  def favorite_list
+    @pictures = Picture.all
+  end
+
 
   private
 

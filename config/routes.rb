@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
+    member do
+      get :favorite_list
+    end
   end
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
