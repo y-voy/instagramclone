@@ -8,6 +8,7 @@
 <% @pictures.each do |picture| %>
   <tr>
     <td><%= picture.content %></td>
+    <td><a class="created_at_label">- <%= picture.created_at.to_s(:datetime_jp) %></a></td>
     <td><%= image_tag picture.image.url if picture.image && picture.image.url %></td>
     <td><%= picture.user.nickname %></td>
     <td><%= link_to '詳細を確認する', picture_path(picture.id) %></td>
@@ -23,6 +24,13 @@
         <td><%= link_to 'お気に入りする', favorites_path(picture_id: picture.id), method: :post, class: 'btn btn-primary' %></td>
       <% end %>
     <% end %>
+    <% @like = current_user.likes.find_by(picture_id: picture.id) %>
+      <% if @like.present? %>
+        <td><%= link_to '', like_path(id: @like.id), class: "glyphicon glyphicon-heart unlike-btn", method: :delete %></td>
+      <% else %>
+        <td><%= link_to '', likes_path(picture_id: picture.id), class: "glyphicon glyphicon-heart-empty like-btn", method: :post %></td>
+      <% end %>
+    <td><span class="badge like-badge"><%= picture.likes.count %></span></td>
   </tr>
 <% end %>
 </table>

@@ -7,4 +7,6 @@ class Picture < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
   has_many :comments_users, through: :comments, source: :user
+  has_many :likes, dependent: :destroy
+  has_many :like_users, through: :likes, source: :user
 end
