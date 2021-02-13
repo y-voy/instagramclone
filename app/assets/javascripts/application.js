@@ -16,6 +16,4 @@
 //= require jquery/dist/jquery.js
 //= require bootstrap/dist/js/bootstrap.min
 //= require jquery
-//= require cropper.min.js
-//= require jquery-cropper.min.js
 //= require_tree .

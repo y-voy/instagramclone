@@ -1,6 +1,21 @@
 <h1>詳細画面</h1>
 <p>内容: <%= @picture.content %></p>
 <p>画像: <%= image_tag @picture.image.url if @picture.image && @picture.image.url %></p>
+
+<h2>コメント一覧</h2>
+<table class="row col-md-12">
+<% @comments.each do |comment| %>
+<p><%= comment.comment %> <%= comment.user.nickname %></p>
+<% end %>
+</table>
+
+<h2>コメントする</h2>
+<%= form_with(model:[@picture, @comment], method: :post) do |f| %>
+<%= f.text_area :comment %>
+<%= f.hidden_field :picture_id, value: @picture.id %>
+<%= f.submit 'コメントする' %>
+<% end %>
+
 <% unless @picture.user_id == current_user.id %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
@@ -8,4 +23,4 @@
     <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-<%= link_to '一覧画面に戻る', pictures_path %>
+<p><%= link_to '一覧画面に戻る', pictures_path %></p>
