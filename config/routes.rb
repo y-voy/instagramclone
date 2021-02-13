@@ -9,10 +9,15 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:create]
   end
-  resources :users
+  resources :users do
+    member do
+      get :followings, :followers
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :favorites, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
+  resources :follow_relationships, only: [:create, :destroy]
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
