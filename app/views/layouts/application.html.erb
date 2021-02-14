@@ -11,27 +11,33 @@
 
   <body>
     <div class="container">
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <%= link_to "Favorite List", favorite_list_picture_path(current_user.id) %>
-      <%= link_to "User List", users_path %>
-      <% if current_user.image && current_user.image.url %>
-      <%= image_tag current_user.image.url, class: 'user-image' %>
-      <% end %>
-      <a class="nav-link"><%= current_user.nickname %></a>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
-    <%= yield %>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-3"></div>
+          <div class="col-md-5"></div>
+          <div class="col-md-4 user-nav">
+            <% if logged_in? %>
+            <%= link_to "", pictures_path, class: "glyphicon glyphicon-home home-nav" %>
+            <% if current_user.favorites.present? %>
+              <%= link_to "", favorite_list_picture_path(current_user.id), class: "glyphicon glyphicon-check favorite-list" %>
+              <% else %>
+              <a class="glyphicon glyphicon-check favorite-list"></a>
+              <% end %>
+              <%= link_to "", users_path, class: "glyphicon glyphicon-user user-list" %>
+              <%= image_tag current_user.image.url, class: 'user-image' %>
+              <%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname-nav" %>
+            <% else %>
+              <%= link_to "Sign up", new_user_path %>
+              <%= link_to "Login", new_session_path %>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+      <%= yield %>
     </div>
-    <footer>
+    <!-- <footer>
       <p>Powered by Yuji Moriya</p>
       <p>© 2021 Yuji Moriya</p>
-    </footer>
+    </footer> -->
   </body>
 </html>
