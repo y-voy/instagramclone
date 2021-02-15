@@ -12,7 +12,6 @@ class PicturesController < ApplicationController
 
   def create
     @picture = current_user.pictures.build(picture_params)
-    @picture.image = "default_image.png"
     if params[:back]
       render :new
     else

@@ -1,21 +1,24 @@
 <% if @user.errors.any? %>
   <div id="error_explanation" class="alert alert-danger col-md-6" role="alert">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+    <h2><%= pluralize(@user.errors.count, "error") %>
+      prohibited this
+      <%= @user.name %>
+      from being saved:</h2>
     <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
 <div class="col-md-2"></div>
 <div class="col-md-5 login-form-iphone">
-<img src="/assets/iphone-sample.png">
+  <img src="/assets/iphone-sample.png">
 </div>
 <div class="col-md-3 signup-form-top">
-<%= form_with(model: @user, local: true) do |f| %>
+  <%= form_with(model: @user, local: true) do |f| %>
   <%= f.label :name, class: "login-form-label" %>
-  <%= f.text_field :name, class: "form-control", placeholder: "川崎　太郎" %>
+  <%= f.text_field :name, class: "form-control", placeholder: "川崎 太郎" %>
   <%= f.label :nickname, class: "login-form-label" %>
   <%= f.text_field :nickname, class: "form-control", placeholder: "ほげほげ" %>
   <%= f.label :email, class: "login-form-label" %>

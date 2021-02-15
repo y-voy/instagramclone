@@ -19,14 +19,14 @@
           </div>
           <div class="col-md-4">
             <% if logged_in? %>
-            <div class="post-nav-flame">
-              <%= link_to '', new_picture_path, class: "glyphicon glyphicon-pencil post-nav" %>
-            </div>
+              <div class="post-nav-flame">
+                <%= link_to '', new_picture_path, class: "glyphicon glyphicon-pencil post-nav" %>
+              </div>
             <% end %>
           </div>
           <div class="col-md-4 user-nav">
             <% if logged_in? %>
-            <%= link_to "", pictures_path, class: "glyphicon glyphicon-home home-nav" %>
+              <%= link_to "", pictures_path, class: "glyphicon glyphicon-home home-nav" %>
               <%= link_to "", favorite_list_picture_path(current_user.id), class: "glyphicon glyphicon-check favorite-list" %>
               <%= link_to "", users_path, class: "glyphicon glyphicon-user user-list" %>
               <%= image_tag current_user.image.url, class: 'user-image' %>
@@ -40,8 +40,8 @@
         </div>
       </nav>
       <div class="main-content">
-      <%= yield %>
-    </div>
+        <%= yield %>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

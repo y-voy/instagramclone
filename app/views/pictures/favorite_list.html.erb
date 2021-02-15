@@ -1,31 +1,33 @@
 <div class="col-md-3"></div>
 <div class="col-md-6">
-<% @pictures.each do |picture| %>
-<% @favorite = current_user.favorites.find_by(picture_id: picture.id) %>
-  <% if @favorite.present? %>
-<div class="card mb-3">
-  <div class="card-body">
-  <%= image_tag picture.user.image.url, class: 'user-image-picture' %>
-  <div class="user-nickname-picture"><%= picture.user.nickname %></div>
-  </div>
-  <%= image_tag picture.image.url, class: "card-img-top" %>
-  <div class="card-body">
-    <p class="card-text"><%= picture.content %></p>
-    <div class="card-btn btn-group">
-    <%= link_to '詳細', picture_path(picture.id), class: "btn btn-default" %>
-    <% if picture.user_id == current_user.id %>
-    <%= link_to "編集", edit_picture_path(picture.id), class: "btn btn-default" %>
-    <%= link_to '削除', picture_path(picture.id), method: :delete, data: { confirm: '本当に削除しても宜しいですか？' }, class: "btn btn-default" %>
-    <% end %>
-    </div>
-    <% unless picture.user_id == current_user.id %>
-        <%= link_to '', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-default glyphicon glyphicon-ok favorite-delete' %>
-      <% else %>
-        <%= link_to '', favorites_path(picture_id: picture.id), method: :post, class: 'btn btn-default glyphicon glyphicon-ok favorite-post' %>
+  <% @pictures.each do |picture| %>
+    <% @favorite = current_user.favorites.find_by(picture_id: picture.id) %>
+      <% if @favorite.present? %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <%= image_tag picture.user.image.url, class: 'user-image-picture' %>
+            <div class="user-nickname-picture"><%= picture.user.nickname %></div>
+          </div>
+          <%= image_tag picture.image.url, class: "card-img-top" %>
+          <div class="card-body">
+            <p class="card-text"><%= picture.content %></p>
+            <div class="card-btn btn-group">
+              <%= link_to '詳細', picture_path(picture.id), class: "btn btn-default" %>
+              <% if picture.user_id == current_user.id %>
+                <%= link_to "編集", edit_picture_path(picture.id), class: "btn btn-default" %>
+                <%= link_to '削除', picture_path(picture.id), method: :delete, data: { confirm: '本当に削除しても宜しいですか？' }, class: "btn btn-default" %>
+              <% end %>
+            </div>
+            <% unless picture.user_id == current_user.id %>
+              <%= link_to '', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-default glyphicon glyphicon-ok favorite-delete' %>
+            <% else %>
+              <%= link_to '', favorites_path(picture_id: picture.id), method: :post, class: 'btn btn-default glyphicon glyphicon-ok favorite-post' %>
+            <% end %>
+            <p class="card-text">
+              <small class="text-muted"><%= picture.created_at.to_s(:datetime_jp) %></small>
+            </p>
+          </div>
+        </div>
       <% end %>
-    <p class="card-text"><small class="text-muted"><%= picture.created_at.to_s(:datetime_jp) %></small></p>
-  </div>
-</div>
-<% end %>
-<% end %>
+    <% end %>
 <div class="col-md-3"></div>

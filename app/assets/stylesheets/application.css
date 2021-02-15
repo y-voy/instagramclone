@@ -23,10 +23,6 @@
      padding:0;
  }
 
- .index-cards {
-   width: 80%;
- }
-
  footer {
    width: 100%;
    background-color: #FFFFFF;
@@ -39,47 +35,14 @@
    position: absolute;
  }
 
-
- .logo {
-   width: 80%;
- }
-
- .login-form-iphone {
-   margin-top: 50px;
- }
-
-.login-form-iphone img {
-  width: 110%;
+/* navbar */
+.logo {
+  width: 80%;
 }
 
- .login-form-top {
-   border-radius: 5%;
-   margin-top: 100px;
-   padding: 50px 10px;
-   background-color: #F7F7F7;
- }
-
- .login-form-label {
-   margin-top: 10px;
- }
-
- .navbar {
-   background-color: #FFFFFF;
-   padding: 10px;
- }
-
- .main-content{
-   margin-top: 20px;
- }
-
-.logout {
-  margin-top: 20px;
-  font-size: 30px;
-  color: #000000;
-}
-
-.signup-form-top {
-  margin-top: 20px;
+.navbar {
+  background-color: #FFFFFF;
+  padding: 10px;
 }
 
 .home-nav {
@@ -124,6 +87,48 @@
   color: #000000;
 }
 
+/* login,signout */
+.login-form-iphone {
+  margin-top: 50px;
+}
+
+.login-form-iphone img {
+ width: 110%;
+}
+
+.login-form-top {
+  border-radius: 5%;
+  margin-top: 100px;
+  padding: 50px 10px;
+  background-color: #F7F7F7;
+}
+
+.login-form-label {
+  margin-top: 10px;
+}
+
+.logout {
+  margin-top: 20px;
+  font-size: 30px;
+  color: #000000;
+}
+
+.signup-form-top {
+  margin-top: 20px;
+}
+
+/* main,index */
+
+ .index-cards {
+   width: 80%;
+ }
+
+
+ .main-content{
+   margin-top: 20px;
+ }
+
+
  .like-btn {
    float: left;
    font-size: 25px;
@@ -144,10 +149,6 @@
  .like-badge {
    background-color: #e54747;
  }
-
-/* .edit-form-top {
-  margin-top: 20px;
-} */
 
 .user-image {
   float: left;
@@ -184,9 +185,6 @@
   margin-top: 5px;
   margin-left: 10px;
   font-size: 15px;
-}
-
-.alert-danger {
 }
 
 .card {
@@ -244,12 +242,6 @@
 
 .favorite-post {
   color: #808080;
-}
-
-.picture-content {
-}
-
-.picture-comment-form {
 }
 
 .picture-comments {

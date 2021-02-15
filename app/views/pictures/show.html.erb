@@ -1,38 +1,41 @@
 <div class="col-md-3"></div>
 <div class="col-md-6">
-<div class="card mb-3">
-  <div class="card-body">
-  <%= image_tag @picture.user.image.url, class: 'user-image-picture' %>
-  <div class="user-nickname-picture"><%= @picture.user.nickname %></div>
-  </div>
-  <%= image_tag @picture.image.url, class: "card-img-top" %>
-  <div class="card-body">
-    <div class="row picture-content">
-    <p class="card-text"><%= @picture.content %></p>
+  <div class="card mb-3">
+    <div class="card-body">
+      <%= image_tag @picture.user.image.url, class: 'user-image-picture' %>
+      <div class="user-nickname-picture"><%= @picture.user.nickname %></div>
     </div>
-    <p class="card-text"><small class="text-muted"><%= @picture.created_at.to_s(:datetime_jp) %></small></p>
-  </div>
-  <div class="picture-comment-form">
-  <%= form_with(model:[@picture, @comment], method: :post) do |f| %>
-  <%= f.text_area :comment, size:"70pxx100px", placeholder: "Enter your comment" %>
-  <%= f.hidden_field :picture_id, value: @picture.id %>
-  <button type="submit" class="btn btn-default">
-    <i class="glyphicon glyphicon-share-alt"></i>
-  </button>
-  <% end %>
+    <%= image_tag @picture.image.url, class: "card-img-top" %>
+    <div class="card-body">
+      <div class="row picture-content">
+        <p class="card-text"><%= @picture.content %></p>
+      </div>
+      <p class="card-text">
+        <small class="text-muted"><%= @picture.created_at.to_s(:datetime_jp) %></small>
+      </p>
+    </div>
+    <div class="picture-comment-form">
+      <%= form_with(model:[@picture, @comment], method: :post) do |f| %>
+      <%= f.text_area :comment, size:"70pxx100px", placeholder: "Enter your comment" %>
+      <%= f.hidden_field :picture_id, value: @picture.id %>
+      <button type="submit" class="btn btn-default">
+        <i class="glyphicon glyphicon-share-alt"></i>
+      </button>
+    <% end %>
   </div>
   <div class="picture-comments">
-  <% @comments.each do |comment| %>
-  <table>
-  <div class="picuture-comments-detail">
-  <td><strong><%= comment.user.nickname %></strong>  <%= comment.comment %></td>
-  <td><%= link_to '削除', picture_comment_path(@picture.id, comment.id), method: :delete, data: { confirm: '本当に削除しても宜しいですか？' } %></td>
-  </div>
-  </table>
-  <% end %>
+    <% @comments.each do |comment| %>
+      <table>
+        <div class="picuture-comments-detail">
+          <td>
+            <strong><%= comment.user.nickname %></strong>
+            <%= comment.comment %></td>
+          <td><%= link_to '削除', picture_comment_path(@picture.id, comment.id), method: :delete, data: { confirm: '本当に削除しても宜しいですか？' } %></td>
+        </div>
+      </table>
+    <% end %>
   </div>
 </div>
 </div>
 <div class="col-md-3"></div>
-<div class="row col-md-12">
-</div>
+<div class="row col-md-12"></div>
