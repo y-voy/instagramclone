@@ -1,6 +1,5 @@
-<h1>Sign up</h1>
 <% if @user.errors.any? %>
-  <div id="error_explanation">
+  <div id="error_explanation" class="alert alert-danger col-md-6" role="alert">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
     <ul>
     <% @user.errors.full_messages.each do |message| %>
@@ -9,20 +8,26 @@
     </ul>
   </div>
 <% end %>
+<div class="col-md-2"></div>
+<div class="col-md-5 login-form-iphone">
+<img src="/assets/iphone-sample.png">
+</div>
+<div class="col-md-3 signup-form-top">
 <%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :nickname %>
-  <%= f.text_field :nickname %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :image %>
-  <%= image_tag @user.image.url, class: "user-image-signup" %>
+  <%= f.label :name, class: "login-form-label" %>
+  <%= f.text_field :name, class: "form-control", placeholder: "川崎　太郎" %>
+  <%= f.label :nickname, class: "login-form-label" %>
+  <%= f.text_field :nickname, class: "form-control", placeholder: "ほげほげ" %>
+  <%= f.label :email, class: "login-form-label" %>
+  <%= f.email_field :email, class: "form-control", placeholder: "name@example.com" %>
+  <%= image_tag @user.image.url, class:"user-image-signup login-form-label" %>
   <%= f.file_field :image %>
-  <%= f.hidden_field :image_cache %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit %>
+  <%= f.label :password, class: "login-form-label" %>
+  <%= f.password_field :password, class: "form-control", placeholder: "Enter your password" %>
+  <%= f.label :password_confirmation, class: "login-form-label" %>
+  <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Enter your password again" %>
+  <br>
+  <%= f.submit "アカウントを作成", class: "btn btn-default" %>
 <% end %>
+</div>
+<div class="col-md-2"></div>

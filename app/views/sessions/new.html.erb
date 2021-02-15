@@ -1,11 +1,18 @@
-<h1>Log in</h1>
-<% flash.each do |key, value| %>
-  <%= content_tag(:div, value, class: "#{key}") %>
-<% end %>
+<p><%= notice %></p>
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit "Log in" %>
+<div class="col-md-2"></div>
+<div class="col-md-5 login-form-iphone">
+<img src="/assets/iphone-sample.png">
+</div>
+<div class="login-form">
+<div class="col-md-3 login-form-top">
+  <%= f.label :email, "メールアドレス", class: "login-form-label" %>
+  <%= f.email_field :email, class: "form-control", placeholder: "name@example.com" %>
+  <%= f.label :password, "パスワード", class: "login-form-label" %>
+  <%= f.password_field :password, class: "form-control", placeholder: "Enter your password" %>
+  <br>
+  <%= f.submit "Log in", class: "btn btn-default" %>
 <% end %>
+</div>
+</div>
+<div class="col-md-2"></div>

@@ -1,9 +1,9 @@
 class PicturesController < ApplicationController
 
-  before_action :set_picture, only: [:show, :edit, :update, :destroy, :favorite_list]
+  before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.order(created_at: :desc)
   end
 
   def new
@@ -12,6 +12,7 @@ class PicturesController < ApplicationController
 
   def create
     @picture = current_user.pictures.build(picture_params)
+    @picture.image = "default_image.png"
     if params[:back]
       render :new
     else
@@ -63,7 +64,12 @@ class PicturesController < ApplicationController
   end
 
   def favorite_list
-    @pictures = Picture.all
+    @favorites = current_user.favorites.all
+    if @favorites.present?
+      @pictures = Picture.all.order(created_at: :desc)
+    else
+      redirect_to pictures_path, notice: "お気に入り登録されている投稿はありません"
+    end
   end
 
 

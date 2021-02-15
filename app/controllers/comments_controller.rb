@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :set_comment, only: [:destroy]
+
   def create
     @comment = current_user.comments.new(comment_params)
     if @comment.save
@@ -9,9 +11,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment.destroy
+    redirect_to pictures_path, notice:"削除しました！"
+  end
+
   private
   def comment_params
-    params.require(:comment).permit(:comment, :picture_id)  #formにてpost_idパラメータを送信して、コメントへpost_idを格納するようにする必要がある。
+    params.require(:comment).permit(:comment, :picture_id)
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 
 end

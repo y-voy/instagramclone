@@ -9,13 +9,77 @@
    background-color: #F7F7F7;
  }
 
+ html {
+   position: relative;
+   min-height: 100%;
+ }
+ body {
+   text-align: center;
+ }
+ li{
+     list-style:none;
+ }
+ ul{
+     padding:0;
+ }
+
+ .index-cards {
+   width: 80%;
+ }
+
+ footer {
+   width: 100%;
+   background-color: #FFFFFF;
+   padding: 20px 0 10px 0;
+   color: #000000;
+   margin: auto;
+   padding-bottom: 10px;
+   font-size: 12px;
+   bottom: 0;
+   position: absolute;
+ }
+
+
+ .logo {
+   width: 80%;
+ }
+
+ .login-form-iphone {
+   margin-top: 50px;
+ }
+
+.login-form-iphone img {
+  width: 110%;
+}
+
+ .login-form-top {
+   border-radius: 5%;
+   margin-top: 100px;
+   padding: 50px 10px;
+   background-color: #F7F7F7;
+ }
+
+ .login-form-label {
+   margin-top: 10px;
+ }
+
  .navbar {
    background-color: #FFFFFF;
    padding: 10px;
  }
 
+ .main-content{
+   margin-top: 20px;
+ }
+
 .logout {
+  margin-top: 20px;
   font-size: 30px;
+  color: #000000;
+}
+
+.signup-form-top {
+  margin-top: 20px;
 }
 
 .home-nav {
@@ -23,6 +87,12 @@
   margin: 5px 15px;
   font-size: 20px;
   color: #000000;
+}
+
+.post-nav {
+  font-size: 30px;
+  color: #000000;
+  text-decoration: none;
 }
 
 .favorite-list {
@@ -47,20 +117,23 @@
   color: #000000;
 }
 
+.logout-nav {
+  float: left;
+  margin: 5px 15px;
+  font-size: 20px;
+  color: #000000;
+}
+
  .like-btn {
-   width: 25px;
-   height: 30px;
+   float: left;
    font-size: 25px;
-   color: #e54747;
-   margin-left: 20px;
+   color: #808080;
   }
 
  .unlike-btn {
-  width: 25px;
-  height: 30px;
+  float: left;
   font-size: 25px;
   color: #e54747;
-  margin-left: 20px;
  }
 
  .created_at_label {
@@ -72,9 +145,9 @@
    background-color: #e54747;
  }
 
- /* .image_form {
-   display: none;
- } */
+/* .edit-form-top {
+  margin-top: 20px;
+} */
 
 .user-image {
   float: left;
@@ -97,4 +170,95 @@
   width: 100px;
   height: 100px;
   object-fit: cover;
+}
+.user-image-picture {
+  float: left;
+  border-radius: 50%;
+  margin-left: 10px;
+  width: 35px;
+  height: 35px;
+}
+
+.user-nickname-picture {
+  float: left;
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.alert-danger {
+}
+
+.card {
+  margin-top: 20px;
+}
+
+.picture-content {
+  padding: 10px;
+}
+
+.picture-favorite-btn {
+  float: right;
+  margin-right: 10px;
+}
+
+.card-text {
+  text-align: left;
+}
+
+.like-message {
+  float: left;
+  font-size: 14px;
+  color: #808080;
+}
+
+.like-likemessage {
+  float: left;
+  margin-top: 2px;
+  margin-left: 15px;
+}
+
+.text-muted {
+  float: left;
+  margin-left: 15px;
+  font-size: 8px;
+}
+
+.user-image-picture-like {
+  float: left;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+}
+
+.glyphicon-ok {
+  margin-bottom: 1px;
+  font-size: 14px;
+}
+
+.favorite-delete {
+  border-color: #e54747;
+  background-color: #e54747;
+  color: #FFFFFF;
+}
+
+.favorite-post {
+  color: #808080;
+}
+
+.picture-content {
+}
+
+.picture-comment-form {
+}
+
+.picture-comments {
+  margin-top: 10px;
+  border-top: 1px solid #808080;
+}
+
+.picuture-comments-detail {
+  margin-top: 10px;
+  float: left;
+  margin-left: 10px;
 }

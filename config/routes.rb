@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     member do
       get :favorite_list
     end
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
   resources :users do
     member do

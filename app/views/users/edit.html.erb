@@ -1,15 +1,21 @@
-<h2>編集する</h2>
-<p>名前とメールアドレスは変更できません</p>
+<div class="row">
+<div class="col-md-4"></div>
+<p class="col-md-4 alert alert-danger">名前とメールアドレスは変更できません<br>必ずパスワードを入力してください</p>
+<div class="col-md-4"></div>
+</div>
+<div class="col-md-4"></div>
+<div class="col-md-4 edit-form-top">
 <%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :nickname %>
-  <%= f.text_field :nickname %>
-  <%= f.label :image %>
-  <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+  <%= f.label :nickname, class: "login-form-label" %>
+  <%= f.text_field :nickname, class: "form-control", placeholder: "ほげほげ" %>
+  <%= image_tag @user.image.url, class: "login-form-label user-image-signup" %>
   <%= f.file_field :image %>
-  <%= f.hidden_field :image_cache %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit %>
+  <%= f.label :password, class: "login-form-label" %>
+  <%= f.password_field :password, class: "form-control", placeholder: "Enter your password" %>
+  <%= f.label :password_confirmation, class: "login-form-label" %>
+  <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Enter your password again" %>
+  <br>
+  <%= f.submit "編集", class: "btn btn-default" %>
 <% end %>
+</div>
+<div class="col-md-4"></div>

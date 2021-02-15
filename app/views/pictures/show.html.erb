@@ -1,26 +1,38 @@
-<h1>詳細画面</h1>
-<p>内容: <%= @picture.content %></p>
-<p>画像: <%= image_tag @picture.image.url if @picture.image && @picture.image.url %></p>
-
-<h2>コメント一覧</h2>
-<table class="row col-md-12">
-<% @comments.each do |comment| %>
-<p><%= comment.comment %> <%= comment.user.nickname %></p>
-<% end %>
-</table>
-
-<h2>コメントする</h2>
-<%= form_with(model:[@picture, @comment], method: :post) do |f| %>
-<%= f.text_area :comment %>
-<%= f.hidden_field :picture_id, value: @picture.id %>
-<%= f.submit 'コメントする' %>
-<% end %>
-
-<% unless @picture.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
+<div class="col-md-3"></div>
+<div class="col-md-6">
+<div class="card mb-3">
+  <div class="card-body">
+  <%= image_tag @picture.user.image.url, class: 'user-image-picture' %>
+  <div class="user-nickname-picture"><%= @picture.user.nickname %></div>
+  </div>
+  <%= image_tag @picture.image.url, class: "card-img-top" %>
+  <div class="card-body">
+    <div class="row picture-content">
+    <p class="card-text"><%= @picture.content %></p>
+    </div>
+    <p class="card-text"><small class="text-muted"><%= @picture.created_at.to_s(:datetime_jp) %></small></p>
+  </div>
+  <div class="picture-comment-form">
+  <%= form_with(model:[@picture, @comment], method: :post) do |f| %>
+  <%= f.text_area :comment, size:"70pxx100px", placeholder: "Enter your comment" %>
+  <%= f.hidden_field :picture_id, value: @picture.id %>
+  <button type="submit" class="btn btn-default">
+    <i class="glyphicon glyphicon-share-alt"></i>
+  </button>
   <% end %>
-<% end %>
-<p><%= link_to '一覧画面に戻る', pictures_path %></p>
+  </div>
+  <div class="picture-comments">
+  <% @comments.each do |comment| %>
+  <table>
+  <div class="picuture-comments-detail">
+  <td><strong><%= comment.user.nickname %></strong>  <%= comment.comment %></td>
+  <td><%= link_to '削除', picture_comment_path(@picture.id, comment.id), method: :delete, data: { confirm: '本当に削除しても宜しいですか？' } %></td>
+  </div>
+  </table>
+  <% end %>
+  </div>
+</div>
+</div>
+<div class="col-md-3"></div>
+<div class="row col-md-12">
+</div>
