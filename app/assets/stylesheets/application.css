@@ -1,4 +1,6 @@
 /*
+ *= require bootstrap
+ *= require bootstrap_override
  *= require bootstrap/dist/css/bootstrap.min
  *= require_tree .
  *= require_self
